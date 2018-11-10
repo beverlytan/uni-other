@@ -1,7 +1,7 @@
 # Prevent users from committing their own RProject
 .Rproj.user
-.Rproj
-btan-datascience-ees.Rproj
+*.Rproj
+uni-other.Rproj
 
 # Prevent users from committing their own .RData and .Rhistory in mutual areas
 .RData
