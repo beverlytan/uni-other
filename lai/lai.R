@@ -8,30 +8,29 @@ library(tidyverse)
 
 data <- read_csv("lai/lai-data.csv")
 
-rad_only <- data %>%
-  select("scenario", "veg_cover", "sens_heat", "lat_heat", "grd_heat")
+# Single axis ---- 
 
-# For scenario where albedo is the same ---- 
-
-same_rad <- rad_only %>%
+sc1_single <- data %>%
   filter(scenario == 1) %>%
+  select(veg_cover, max_pbl, sens_heat, lat_heat, grd_heat) %>%
   gather(type, value, select = 3:5)
 
-(plot <- ggplot(same_rad, aes(x=veg_cover)) +
-  geom_area(data = same_rad, aes(y = value, fill = type), alpha=.4) + 
+(plot <- ggplot(sc1_single, aes(x=veg_cover)) +
+  geom_area(data = sc1_single, aes(y = value, fill = type), alpha=.4) + 
   theme_bw() + 
   theme(panel.grid = element_blank()))
 
 # Test adding another axes ---- 
 
-same <- data %>%
+sc1 <- data %>%
   filter(scenario == 1) %>%
   select(veg_cover, max_pbl, sens_heat, lat_heat, grd_heat) %>%
   gather(type, value, select = 3:5)
 
-ggplot(data = same) + 
+View(sc1)
+
+ggplot(data = sc1) + 
   geom_line(aes(x = veg_cover, y = max_pbl)) +
-  geom_point(aes(x = veg_cover, y = max_pbl)) +
   geom_area(aes(x = veg_cover, y = value, fill = type), alpha = 0.4) + 
   scale_y_continuous(
     name = "Radiation value", 
@@ -43,7 +42,7 @@ ggplot(data = same) +
 # Above graph is problematic because its not letting me plot my geom_line and geom_points
 # Although the graph below works??? 
 
-ggplot(data = same) + 
+ggplot(data = sc1) + 
   geom_line(aes(x = veg_cover, y = max_pbl)) +
   geom_point(aes(x = veg_cover, y = max_pbl)) + 
   theme_bw() + 
