@@ -3,7 +3,9 @@
 # Loading packages ---- 
 
 library(tidyverse)
+library(grid)
 library(gridExtra)
+library(lemon)
 
 # Loading data ---- 
 
@@ -120,7 +122,7 @@ p1a <- ggplot(pbl1) +
   theme(panel.grid = element_blank()) + 
   scale_x_reverse(name = NULL, breaks = c(100, 80, 60, 40, 20, 0)) + 
   scale_y_continuous(
-    name = "Max PBL height (m)", 
+    name = "\n Max PBL height (m)", 
     limits = c(1000, 1600))
 
 p1b <- ggplot(heat1) + 
@@ -132,7 +134,7 @@ p1b <- ggplot(heat1) +
                     values = c("#fed976", "#feb24c", "#d95f0e"),
                     labels = c("Ground", "Latent", "Sensible")) + 
   scale_y_continuous(
-    name = "Energy (W/m2)", 
+    name = "\n Energy (W/m2)", 
     limits = c(0, 800),
     breaks = c(0, 200, 400, 600, 800))
 
@@ -193,4 +195,6 @@ grid.arrange(p1a + ggtitle("Scenario A"),
              p3b + theme(legend.position='hidden'), legend,
              bottom = "Vegetation cover (%)", 
              nrow = 2, ncol = 4)
+
+# How do I better position the heat flux and veg cover label?  
 
