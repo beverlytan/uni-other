@@ -1,0 +1,200 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{Introduction to Latex}
+\author{Beverly Tan}
+\date{27 February 2019}
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+\section{Introduction}
+
+This is my first document using Overleaf \LaTeX
+
+\section{Basic material}
+
+\subsection{The very basics}
+\label{stage1}
+
+This is the methodology for stage 1. 
+
+How do I make the paragraphs look like what we see now, because the original default paragraph looks horrible? I use the "usepackage\{parskip\}" at the start before "begin\{document\}". 
+
+\subsection{Sectioning and referencing}
+
+Refer to section \ref{stage1} on page \pageref{stage1} for methodology for stage 1. In this case the "2.1" and "(page) 1" is not fixed, we've specified it by "ref\{stage1\}" and "pageref\{stage1\}" respectively, which we have stated above under the section we wanted to be referenced with "label\{stage1\}" - in this case that line of code is actually under "The very basics". So if we were to add a section between the Introduction and Basic material, it would automatically change it to 3.1 and you wont have to do that manually! :-) 
+
+Another cool thing about \LaTeX is that using the "hyperref" package at the start of the document - our contents page, and these references now become clickable! :-) 
+
+\newpage
+
+\section{Formatting}
+
+\subsection{Font effects}
+
+This is me testing out different font effects. \textit{This text will be in italics.} \textbf{This text will be bolded.} \underline{This text will be underlined.} {\color{blue}{This text will be blue in colour.}} {\color{red}{This text will be red in colour.}} {\tiny These are tiny words.}{\large These are larger words.} What if I want to combine the different text effects? {\color{red}{\textbf{\textit{This text will be in bolded italics in red font.}}}}
+
+\subsection{Lists and spaces}
+
+List number 1
+
+\begin{enumerate}
+    \item Hello
+    \item How are you?
+    \begin{itemize}
+        \item This makes smaller things
+        \item How cool! 
+    \end{itemize}
+\end{enumerate}
+
+\vspace{12pt}
+
+List number 2
+
+\begin{itemize}
+    \item Default bullet point
+    \item[-] Line bullet point
+    \item[(a)] Word bullet point
+\end{itemize}
+
+\vspace{12pt}
+
+"vspace\{12pt\}" will create a space that is of 12pt size above this line.
+
+\subsection{Special characters}
+
+Sometimes you will need to add "\textbackslash" before some symbols such as \# or \&, because on their own they mean certain things in \LaTeX, so those would look like this: \textbackslash\# and \textbackslash\&. 
+
+Item \#1A\textbackslash642 costs \$8 \& is sold at a \~{}10\% profit.
+
+\newpage
+
+\section{Tables}
+
+In this section, I will now try to create tables. Note that the default for tables is that they have no lines, if you want lines you will have to specify that. 
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        8 & here's \\
+        \cline{2-2}
+        86 & stuff \\
+        \hline
+         \hline
+         88 & now \\
+         \hline
+    \end{tabular}
+    \caption{Test table number one}
+\end{table}
+
+Note that if I want my table to be at a specific location relative to the text, instead of \LaTeX deciding where the tables will be placed, next to the \{table\}, I will have to add [h] - h for "here", to tell \LaTeX that I want it exactly at this spot. This is a problem when you wrap your whole table in "table", instead of just using "tabular" - because wrapping it in table makes it an environment and allows it to float! 
+
+\vspace{12pt}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|r|r}
+        Item & Quantity & Price(\$) \\
+        \hline
+        Nails & 500 & 0.34 \\
+        Wooden boards & 100 & 4.00 \\
+        Bricks & 240 & 11.50
+    \end{tabular}
+    \caption{Price list of construction items}
+\end{table}
+
+Let me try out another sample table! :-) 
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|ccc}
+        & & Year \\
+        \cline{2-4}
+        City & 2006 & 2007 & 2008 \\
+        \hline
+        London & 123 & 456 & 789 \\
+        Berlin & 098 & 765 & 432
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
+
+Great, it worked!
+
+\newpage
+
+\section{Figures}
+
+Now I want to try to insert figures into my document. The first thing to do is to upload an image into this latex-intro folder that I have created, which will be uploaded into the cloud. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{DSC01138.JPG}
+    \caption{Soda}
+    \label{fig:my_label}
+\end{figure}
+
+Heh soda is v cute!
+
+\newpage
+
+\section{Equations}
+
+Let us check out what math mode does: $1 + 2 = 3$. Here I use a single \$ at the start and end of the "1+2=3". This is as compared to the following, where I use double \$\$ at the start and front of the "1+2=3", which makes it into a separate line, and centred: $$1 + 2 = 3$$
+
+If I wanted to make a numbered eqn, I have to use the following: \\
+\textbackslash begin\{equation\} ... \textbackslash end\{equation\}, which will end up looking like this: 
+
+\begin{equation}
+    1 + 2 = 3
+\end{equation}
+
+If I want to make a series of questions, you use "eqnarray" instead of "equation" (or you could always just stack two equations, but that's less organized). 
+
+\begin{eqnarray}
+    1 + 2 = 3 \\
+    4 + 5 = 9
+\end{eqnarray}
+
+\subsection{Mathematical symbols}
+
+Note that when we insert mathematical symbols, we also have to be in math mode - which means that that bit of code/text should be within \$ or \$\$!
+
+\begin{equation}
+e = mc^2 
+\end{equation}
+
+\begin{equation}
+\pi = \frac{c}{d}
+\end{equation}
+
+\begin{equation}
+\frac{d}{dx} e^x = e^x
+\end{equation}
+
+\begin{equation}
+\frac{d}{dx} \int_0^\infty f(s)ds = f(x)
+\end{equation}
+
+\begin{equation}
+f(x) = \sum_{i} = 0^\infty \frac{f^(^i^)(0)}{i!} x^i
+\end{equation}
+
+\begin{equation}
+x = \sqrt{\frac{x_i}{z} y}
+\end{equation}
+
+\end{document}
+
+

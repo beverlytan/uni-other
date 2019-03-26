@@ -3,5 +3,3 @@
 - Land atmosphere interactions intermittent assessment: stacked area plots
 
 - Field course research essay figures 
-
-Testing overleaf and github hahahahhaha 
